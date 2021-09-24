@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect, } from "react-r
 import { Home } from './components/pages/Home';
 import { SuccessPassword } from './components/pages/SuccessPassword';
 import { SuccessMail } from './components/pages/SuccessMail';
-import { ResetPasswordLetter } from './components/pages/ResetPasswordLetter';
+import { ResetPasswordConfirm } from './components/pages/ResetPasswordConfirm';
 import { ResetPassword } from './components/pages/ResetPassword';
 import { NewPassword } from './components/pages/NewPassword';
 import { Confirmation } from './components/pages/Confirmation';
@@ -51,7 +51,7 @@ function App() {
         </div>
 
         <Switch>
-          <Route exact path="/home">
+          <Route exact path="/">
             <Home />
           </Route>
           <Route exact path="/login">
@@ -63,32 +63,23 @@ function App() {
           <Route exact path="/confirmation">
             <Confirmation />
           </Route>
-          <Route exact path="/newPassword">
+          <Route exact path="/new-password">
             <NewPassword />
           </Route>
-          <Route exact path="/resetPassword">
+          <Route exact path="/reset-password">
             <ResetPassword />
           </Route>
-          <Route exact path="/resetPasswordLetter">
-            <ResetPasswordLetter />
+          <Route exact path="/reset-password-confirm">
+            <ResetPasswordConfirm />
           </Route>
-          <Route exact path="/successMail">
+          <Route exact path="/success-mail">
             <SuccessMail />
           </Route>
-          <Route exact path="/successPassword">
+          <Route exact path="/success-password">
             <SuccessPassword />
           </Route>
         </Switch>
       </Router>
-
-      {/*       <Login />
-      <Registration />
-      <Confirmation />
-      <SuccessMail />
-      <SuccessPassword />
-      <NewPassword />
-      <ResetPasswordLetter />
-      <ResetPassword /> */}
     </div >
   );
 }

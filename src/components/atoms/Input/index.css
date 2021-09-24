@@ -1,4 +1,4 @@
-.input-wrapper input {
+.input {
     width: 372px;
     height: 63px;
     background: #f5f9ff;
@@ -14,15 +14,15 @@
     letter-spacing: 0.05em;
     color: #007bff;
 }
-.input-wrapper input:invalid {
+.input:invalid {
     border: 3px solid red;
 }
-.input-wrapper input[type="email"]:valid {
+.input[type="email"]:valid {
     background: url(../../img/emailViewer.png) no-repeat;
     background-position: right center;
 }
 
-.input-wrapper input[type="password"]:valid {
+.input[type="password"]:valid {
     background: url(../../img/passViewre.png) no-repeat;
     background-position: right center;
 }
@@ -35,4 +35,7 @@
     letter-spacing: 0.05em;
     color: #254050;
     margin-bottom: 14px;
+}
+.active {
+    border: 3px solid #007bff;
 }

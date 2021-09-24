@@ -1,6 +1,7 @@
 import React from "react";
 import { memo } from "react";
 import { Button } from "../atoms/Button";
+import { Head } from "../molecules/Head";
 import { Header } from "../molecules/Header";
 
 interface IMainTemplate {
@@ -10,7 +11,7 @@ interface IMainTemplate {
 
 export const MainTemplate = memo(({ titleBlock, mainBlock }: IMainTemplate) => {
     return (
-        <div >
+        <div className="background-wrapper">
             <Header />
             <div className="main-template-wrapper">
                 <div>

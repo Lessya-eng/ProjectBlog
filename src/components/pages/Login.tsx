@@ -1,32 +1,36 @@
+import React, { useEffect } from "react";
 import { memo } from "react";
-import { BrowserRouter as Router, Switch, Route, Link, Redirect, } from "react-router-dom";
 import { Button } from "../atoms/Button";
 import { Input } from "../atoms/Input";
 import { Title } from "../atoms/Title";
 import { MainTemplate } from "../template/MainTemplate";
-import React from "react";
-/* import React, { useState } from "react";
-import { validateName, validateEmail } from "../helper/ForLogin";
-import { login } from "../router/utils";
-import { useHistory } from "react-router"; */
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom";
+import { getLoginSelector } from "../../core/selectors/loginSelector";
+import { useDispatch, useSelector } from "react-redux";
+import { validateEmail, validatePassword } from "../helper/ForLogin";
+import { setEmailLoginAction, setPasswordLoginAction } from "../../core/actions/loginAction"
 
 
 
 export const Login = memo(() => {
-    /*    const [userName, setUserName] = useState(" ");
-       const [email, setEmail] = useState("");
-   
-       const isValidUserName = validateName(userName)
-       const isValidEmail = validateEmail(email)
-       const history = useHistory();
-   
-       const loginUser = () => {
-           if (isValidUserName && isValidEmail) {
-               console.log("login");
-               login(userName);
-               history.push("/films")
-           }
-       } */
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const { email_login, password_login } = useSelector(getLoginSelector);
+    const isValidEmailLogin = validateEmail(email_login);
+    const isValidPasswordLogin = validatePassword(password_login);
+
+    useEffect(() => {
+        return () => {
+            dispatch(setEmailLoginAction(""));
+            dispatch(setPasswordLoginAction(""));
+        };
+    }, [dispatch]);
+
+    const loginUser = () => {
+        if (isValidEmailLogin) {
+            history.push("/");
+        }
+    }
     return (
         <MainTemplate
             titleBlock={
@@ -38,10 +42,21 @@ export const Login = memo(() => {
             }
             mainBlock={
                 <div className="input-center" >
-                    <Input searchValue={""} text={"Email"} type={"email"} />
-                    <Input searchValue={""} text={"Password"} type={"password"} />
-                    <Button text={"Login"} />
-                    <p className="login-text">Forgot your password? <a href="#">Reset password </a></p>
+                    <Input value={email_login} text={"Email"} type={"email"} isValid={isValidEmailLogin} onChangeHandler={(text: string) => dispatch(setEmailLoginAction(text.trim()))} />
+                    <Input value={password_login} text={"Password"} type={"password"} isValid={isValidPasswordLogin} onChangeHandler={(text: string) => dispatch(setPasswordLoginAction(text.trim()))} />
+                    <Button text={"Login"}
+                        isValid={
+                            isValidEmailLogin &&
+                            isValidPasswordLogin
+                        }
+                        onClick={loginUser} />
+                    <p className="login-text">Forgot your password?{" "}
+                        <Link className="for-link" to={"/reset-password"}>
+                            Reset password{" "}
+                        </Link>
+                    </p>
+                    <p className="login-text"></p>
+                    <p className="login-text"></p>
                 </div>
             }
         />
