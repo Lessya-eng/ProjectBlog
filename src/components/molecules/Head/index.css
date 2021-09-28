@@ -1,0 +1,143 @@
+.btn-common {
+    width: 243px;
+    height: 68px;
+
+    background: #7f7fd5;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 13px;
+    color: white;
+    font-family: "Alata";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 33px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.btn-common._disable {
+    background: #ebebeb;
+    border: 2px solid #ebebeb;
+    box-sizing: border-box;
+}
+
+.input-common {
+    width: 243px;
+    height: 51.84px;
+    border: 2px solid #ebebeb;
+    color: black;
+    border-radius: 5px;
+    outline: none;
+}
+
+.input-common:focus {
+    border: 2px solid #1a1b80 !important;
+}
+
+.input-common._error {
+    border: 2px solid red;
+}
+
+.title {
+    font-family: Alata;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #016efc;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.column:last-of-type {
+    margin: 0 0 40px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    padding: 20px;
+    background: #f5f9ff;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+}
+
+#hamburger {
+    margin: 4%;
+}
+
+#hamburger {
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.25s linear;
+    width: clamp(1.5rem, 2vw + 1.1rem, 6rem);
+    height: clamp(2rem, 1.4vw + 1.7rem, 5rem);
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: -2px 10px 10px;
+}
+
+#hamburger:hover {
+    opacity: 1;
+}
+
+#hamburger div,
+#hamburger div:after,
+#hamburger div:before {
+    background-color: #016efc;
+    border-radius: 10px;
+    width: clamp(1.5rem, 2vw + 1.1rem, 6rem);
+    height: clamp(0.2rem, 0.3vw + 0.1rem, 0.8rem);
+    transition: all 0.15s linear;
+}
+
+#hamburger div:before,
+#hamburger div:after {
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+#hamburger div:before {
+    transform: translateY(-200%);
+}
+
+#hamburger div:after {
+    transform: translateY(200%);
+}
+
+#hamburger.open div {
+    background: transparent;
+}
+
+#hamburger.open div:before {
+    transform: rotate(45deg);
+}
+
+#hamburger.open div:after {
+    transform: rotate(-45deg);
+}
+
+.menu-btn {
+    outline: none;
+    border: none;
+    background: none;
+    margin: 0;
+}

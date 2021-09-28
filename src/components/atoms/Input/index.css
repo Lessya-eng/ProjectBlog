@@ -1,0 +1,41 @@
+.input {
+    width: 372px;
+    height: 63px;
+    background: #f5f9ff;
+    border: 4px solid #82a9ff;
+    box-sizing: border-box;
+    border-radius: 200px;
+    margin-bottom: 41px;
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 29px;
+    letter-spacing: 0.05em;
+    color: #007bff;
+}
+.input:invalid {
+    border: 3px solid red;
+}
+.input[type="email"]:valid {
+    background: url(../../img/emailViewer.png) no-repeat;
+    background-position: right center;
+}
+
+.input[type="password"]:valid {
+    background: url(../../img/passViewre.png) no-repeat;
+    background-position: right center;
+}
+.input-wrapper h4 {
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 29px;
+    letter-spacing: 0.05em;
+    color: #254050;
+    margin-bottom: 14px;
+}
+.active {
+    border: 3px solid #007bff;
+}
