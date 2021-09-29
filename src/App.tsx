@@ -10,6 +10,8 @@ import { ResetPasswordConfirm } from './components/pages/ResetPasswordConfirm';
 import { ResetPassword } from './components/pages/ResetPassword';
 import { NewPassword } from './components/pages/NewPassword';
 import { Confirmation } from './components/pages/Confirmation';
+import { AllPosts } from './components/pages/AllPosts';
+import { MyPosts } from './components/pages/MyPosts';
 
 function App() {
   return (
@@ -17,39 +19,7 @@ function App() {
     <div className="app">
       <Router>
         <div>
-          {/*           <nav>
-            <ul>
-              <li>
-                <Link to="/home">Home</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/registration">Registration</Link>
-              </li>
-              <li>
-                <Link to="/confirmation">Confirmation</Link>
-              </li>
-              <li>
-                <Link to="/newPassword">New Password</Link>
-              </li>
-              <li>
-                <Link to="/resetPassword">Reset Password</Link>
-              </li>
-              <li>
-                <Link to="/resetPasswordLetter">Reset Password Letter</Link>
-              </li>
-              <li>
-                <Link to="/successMail">Success Mail</Link>
-              </li>
-              <li>
-                <Link to="/successPassword">Success Password</Link>
-              </li>
-            </ul>
-          </nav> */}
         </div>
-
         <Switch>
           <Route exact path="/">
             <Home />
@@ -75,8 +45,11 @@ function App() {
           <Route exact path="/success-mail">
             <SuccessMail />
           </Route>
-          <Route exact path="/success-password">
-            <SuccessPassword />
+          <Route exact path="/all-posts">
+            <AllPosts />
+          </Route>
+          <Route exact path="/my-posts">
+            <MyPosts />
           </Route>
         </Switch>
       </Router>

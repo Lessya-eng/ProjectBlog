@@ -9,12 +9,13 @@ import { getRegistrationSelector } from "../../core/selectors/registrationSelect
 import { useDispatch, useSelector } from "react-redux";
 import { validateName, validateEmail, validatePassword, validateConfirmPassword } from "../helper/ForLogin";
 import { setEmailAction, setUserNameAction, setPasswordAction, setConfirmPasswordAction } from "../../core/actions/registrationAction"
-
+import { sendRegistrationData } from "../../core";
 
 export const Registration = memo(() => {
     const history = useHistory();
     const dispatch = useDispatch();
     const { password, confirmPassword, email, userName } = useSelector(getRegistrationSelector);
+
 
     const isValidUserName = validateName(userName);
     const isValidEmail = validateEmail(email);
@@ -25,6 +26,13 @@ export const Registration = memo(() => {
     );
     const registrationUser = () => {
         if (isValidUserName && isValidEmail) {
+            dispatch(
+                sendRegistrationData({
+                    username: userName,
+                    password,
+                    email,
+                })
+            );
             history.push("/confirmation");
         }
     }

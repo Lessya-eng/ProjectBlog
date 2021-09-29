@@ -432,3 +432,18 @@ textarea {
   background-size: contain;
   background-position: left bottom;
 }
+.background-wrapper-blog {
+  height: 100%;
+  width: 100%;
+}
+.blog-template {
+  margin-left: 105px;
+}
+.blog-template-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  width: 345px;
+  margin-bottom: 60px;
+}
