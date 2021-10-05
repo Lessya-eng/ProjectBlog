@@ -30,7 +30,7 @@ export const sendRegistrationDataErrorAction = createAction(
 
 export const sendRegistrationDataSuccessAction = createAction(
     ACTIONS.SEND_REGISTRATION_DATA_SUCCESS_ACTION,
-)<any>();
+)<boolean>();
 
 export const sendRegistrationConfirmationAction = createAction(
     ACTIONS.SEND_REGISTRATION_CONFIRMATION

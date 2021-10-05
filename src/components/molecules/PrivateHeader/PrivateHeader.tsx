@@ -9,7 +9,6 @@ import { getRegistrationSelector } from "../../../core/selectors/registrationSel
 
 
 export const PrivateHeader = memo(() => {
-    const { userName } = useSelector(getRegistrationSelector)
     return (
         <div className="wrapper">
             <div >
@@ -21,7 +20,7 @@ export const PrivateHeader = memo(() => {
                 <div className="burger-line fourth"></div>
                 <div className="block-user-header">
                     <img src={user} alt="user" />
-                    <p className="user-name">{userName}</p>
+                    <p className="user-name">UserName</p>
                 </div>
                 <nav className="main-menu">
                     <Link className="for-link" to={"/all-posts"}><a href="#" className="link">All Posts</a></Link>
