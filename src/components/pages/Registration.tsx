@@ -9,12 +9,12 @@ import { getRegistrationSelector } from "../../core/selectors/registrationSelect
 import { useDispatch, useSelector } from "react-redux";
 import { validateName, validateEmail, validatePassword, validateConfirmPassword } from "../helper/ForLogin";
 import { setEmailAction, setUserNameAction, setPasswordAction, setConfirmPasswordAction } from "../../core/actions/registrationAction"
-import { sendRegistrationData } from "../../core";
+import { sendRegistrationDataAction } from "../../core";
 
 export const Registration = memo(() => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const { password, confirmPassword, email, userName } = useSelector(getRegistrationSelector);
+    const { password, confirmPassword, email, userName, error } = useSelector(getRegistrationSelector);
 
 
     const isValidUserName = validateName(userName);
@@ -27,7 +27,7 @@ export const Registration = memo(() => {
     const registrationUser = () => {
         if (isValidUserName && isValidEmail) {
             dispatch(
-                sendRegistrationData({
+                sendRegistrationDataAction({
                     username: userName,
                     password,
                     email,
@@ -51,6 +51,7 @@ export const Registration = memo(() => {
                     <Input value={email} text={"Email"} type={"email"} isValid={isValidEmail} onChangeHandler={(text: string) => dispatch(setEmailAction(text.trim()))} />
                     <Input value={password} text={"Password"} type={"password"} isValid={isValidPassword} onChangeHandler={(text: string) => dispatch(setPasswordAction(text.trim()))} />
                     <Input value={confirmPassword} text={"Confirm Password"} type={"password"} isValid={isValidConfirmPassword} onChangeHandler={(text: string) => dispatch(setConfirmPasswordAction(text.trim()))} />
+                    <p className="login-text">{error}</p>
                     <Button text={"Login"}
                         isValid={
                             isValidUserName &&

@@ -11,10 +11,14 @@ import {
     Redirect, useHistory
 } from "react-router-dom";
 import { AddBtn } from "../atoms/AddBtn";
-import { FoldedPost } from "../molecules/FoldedPost";
+import { IPost } from "../../types/post";
+import { FoldedMyPost } from "../molecules/FoldedMyPosts";
+import { posts } from "../../mock/index";
+interface IPostList {
+    post: IPost[];
+}
 
-
-export const MyPosts = memo(() => {
+export const MyPosts = memo(({ post }: IPostList) => {
     const history = useHistory();
     const allPosts = () => {
         history.push("/");
@@ -29,8 +33,13 @@ export const MyPosts = memo(() => {
             }
             mainBlock={
                 <div className="blog-template-body">
-                    <FoldedPost />
-                </div>} />
+                    {posts?.map((post) => (
+                        <div key={post.id}>
+                            <FoldedMyPost {...post} />
+                        </div>
+                    ))}
+                </div>
+            } />
 
 
     )

@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } fr
 import { getLoginSelector } from "../../core/selectors/loginSelector";
 import { useDispatch, useSelector } from "react-redux";
 import { validateEmail, validatePassword } from "../helper/ForLogin";
-import { setEmailLoginAction, setPasswordLoginAction } from "../../core/actions/loginAction"
+import { sendLoginDataAction, setEmailLoginAction, setPasswordLoginAction } from "../../core/actions/loginAction"
 
 
 
@@ -16,7 +16,7 @@ import { setEmailLoginAction, setPasswordLoginAction } from "../../core/actions/
 export const Login = memo(() => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const { email_login, password_login } = useSelector(getLoginSelector);
+    const { email_login, password_login, error, isSuccess } = useSelector(getLoginSelector);
     const isValidEmailLogin = validateEmail(email_login);
     const isValidPasswordLogin = validatePassword(password_login);
 
@@ -28,10 +28,22 @@ export const Login = memo(() => {
     }, [dispatch]);
 
     const loginUser = () => {
-        if (isValidEmailLogin) {
-            history.push("/");
+        if (isValidEmailLogin && isValidPasswordLogin) {
+            dispatch(
+                sendLoginDataAction({
+                    password_login,
+                    email_login,
+                })
+            );
+            /* history.push("/"); */
         }
     }
+
+    useEffect(() => {
+        if (isSuccess) {
+            history.push("/all-posts");
+        }
+    }, [isSuccess, history])
     return (
         <MainTemplate
             titleBlock={
@@ -45,6 +57,7 @@ export const Login = memo(() => {
                 <div className="input-center" >
                     <Input value={email_login} text={"Email"} type={"email"} isValid={isValidEmailLogin} onChangeHandler={(text: string) => dispatch(setEmailLoginAction(text.trim()))} />
                     <Input value={password_login} text={"Password"} type={"password"} isValid={isValidPasswordLogin} onChangeHandler={(text: string) => dispatch(setPasswordLoginAction(text.trim()))} />
+                    <p className="login-text">{error}</p>
                     <Button text={"Login"}
                         isValid={
                             isValidEmailLogin &&

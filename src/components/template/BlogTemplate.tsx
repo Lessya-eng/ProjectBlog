@@ -1,8 +1,6 @@
 import React from "react";
 import { memo } from "react";
-import { Button } from "../atoms/Button";
-import { Head } from "../molecules/Head";
-import { Header } from "../molecules/Header";
+import { PrivateHeader } from "../molecules/PrivateHeader";
 
 interface IBlogTemplate {
     titleBlock: React.ReactNode;
@@ -13,7 +11,7 @@ export const BlogTemplate = memo(({ titleBlock, mainBlock }: IBlogTemplate) => {
     return (
         <div className="background-wrapper-blog">
             <div className="for-header">
-                <Header />
+                <PrivateHeader />
             </div>
             <div className="blog-template">
                 <div>

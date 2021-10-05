@@ -1,0 +1,1 @@
+export { FoldedPostDescription } from "./FoldedPostDescription";

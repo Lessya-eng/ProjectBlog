@@ -5,6 +5,8 @@ import {
     setUserNameAction,
     setPasswordAction,
     setConfirmPasswordAction,
+    sendRegistrationDataErrorAction,
+    sendRegistrationDataSuccessAction,
 } from "../actions/registrationAction";
 
 export interface IRegistrationState {
@@ -12,6 +14,8 @@ export interface IRegistrationState {
     email: string,
     password: string,
     confirmPassword: string,
+    error: string | null;
+    isSuccess: boolean;
 }
 
 const defaultState: IRegistrationState = {
@@ -19,12 +23,17 @@ const defaultState: IRegistrationState = {
     email: "",
     password: "",
     confirmPassword: "",
+    error: null,
+    isSuccess: false,
+
 };
 const actions = {
     setEmailAction,
     setUserNameAction,
     setPasswordAction,
     setConfirmPasswordAction,
+    sendRegistrationDataErrorAction,
+    sendRegistrationDataSuccessAction,
 };
 
 export const registrationReducer = createReducer<
@@ -45,4 +54,12 @@ export const registrationReducer = createReducer<
     .handleAction(setConfirmPasswordAction, (state, { payload: confirmPassword }) => ({
         ...state,
         confirmPassword,
+    }))
+    .handleAction(sendRegistrationDataErrorAction, (state, { payload: error }) => ({
+        ...state,
+        error,
+    }))
+    .handleAction(sendRegistrationDataSuccessAction, (state, { payload: isSuccess }) => ({
+        ...state,
+        isSuccess,
     }));

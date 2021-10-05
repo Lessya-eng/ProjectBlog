@@ -12,13 +12,19 @@ import {
 } from "react-router-dom";
 import { AddBtn } from "../atoms/AddBtn";
 import { FoldedPost } from "../molecules/FoldedPost";
+import { IPost } from "../../types/post";
+import { posts } from "../../mock/index";
 
+interface IPostList {
+    post: IPost[];
+}
 
-export const AllPosts = memo(() => {
-    const history = useHistory();
-    const allPosts = () => {
-        history.push("/");
-    }
+export const AllPosts = memo(({ post }: IPostList) => {
+
+    /*     const history = useHistory();
+        const allPosts = () => {
+            history.push("/");
+        } */
     return (
         <BlogTemplate
             titleBlock={
@@ -29,9 +35,13 @@ export const AllPosts = memo(() => {
             }
             mainBlock={
                 <div className="blog-template-body">
-                    <FoldedPost />
-                </div>} />
-
-
+                    {posts?.map((post) => (
+                        <div key={post.id}>
+                            <FoldedPost key={post.id} {...post} />
+                        </div>
+                    ))}
+                </div>
+            }
+        />
     )
 });

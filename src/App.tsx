@@ -12,45 +12,31 @@ import { NewPassword } from './components/pages/NewPassword';
 import { Confirmation } from './components/pages/Confirmation';
 import { AllPosts } from './components/pages/AllPosts';
 import { MyPosts } from './components/pages/MyPosts';
+import { PrivateRoute } from './components/router/PrivateRouter';
+import { PublicRoute } from './components/router/PublicRouter';
 
 function App() {
   return (
-
     <div className="app">
       <Router>
         <div>
         </div>
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/registration">
-            <Registration />
-          </Route>
-          <Route exact path="/confirmation">
-            <Confirmation />
-          </Route>
-          <Route exact path="/new-password">
-            <NewPassword />
-          </Route>
-          <Route exact path="/reset-password">
-            <ResetPassword />
-          </Route>
-          <Route exact path="/reset-password-confirm">
-            <ResetPasswordConfirm />
-          </Route>
-          <Route exact path="/success-mail">
-            <SuccessMail />
-          </Route>
-          <Route exact path="/all-posts">
-            <AllPosts />
-          </Route>
-          <Route exact path="/my-posts">
-            <MyPosts />
-          </Route>
+          <PublicRoute component={Home} path="/" exact />
+          <PublicRoute component={Login} path="/login" exact />
+          <PublicRoute component={Registration} path="/registration" exact />
+          <PublicRoute
+            component={Confirmation}
+            path="/activate/:uid/:token"
+            exact
+          />
+          <PublicRoute component={NewPassword} path="/new-password" exact />
+          <PublicRoute component={ResetPassword} path="/reset-password" exact />
+          <PublicRoute component={ResetPasswordConfirm} path="/reset-password-confirm" exact />
+          <PublicRoute component={SuccessMail} path="/success-mail" exact />
+          <PublicRoute component={SuccessPassword} path="/success-password" exact />
+          <PublicRoute component={AllPosts} path="/all-posts" exact />
+          <PublicRoute component={MyPosts} path="/my-posts" exact />
         </Switch>
       </Router>
     </div >
