@@ -1,0 +1,16 @@
+.folded-post-img {
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    color: #016efc;
+    margin-bottom: 20px;
+    border: 1px solid #ebebeb;
+    box-sizing: border-box;
+    border-radius: 11px;
+    width: 296px;
+    height: 120px;
+}

@@ -1,0 +1,1 @@
+export { FoldedPostImg } from "./FoldedPostImg";
