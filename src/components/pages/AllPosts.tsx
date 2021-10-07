@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { memo } from "react";
 import { Button } from "../atoms/Button";
 import { Title } from "../atoms/Title";
@@ -12,19 +12,25 @@ import {
 } from "react-router-dom";
 import { AddBtn } from "../atoms/AddBtn";
 import { FoldedPost } from "../molecules/FoldedPost";
-import { IPost } from "../../types/post";
+import { IPost } from "../../types/posts";
 import { posts } from "../../mock/index";
+import { useDispatch, useSelector } from "react-redux";
+import { getPostsAction } from "../../core/actions/postsActions";
+import { getPostsState } from "../../core/selectors/postsSelectors";
+import { getAppState } from "../../core/selectors/appSelectors";
 
-interface IPostList {
-    post: IPost[];
-}
 
-export const AllPosts = memo(({ post }: IPostList) => {
 
-    /*     const history = useHistory();
-        const allPosts = () => {
-            history.push("/");
-        } */
+export const AllPosts = memo(() => {
+    const dispatch = useDispatch();
+    const { posts } = useSelector(getPostsState);
+
+    useEffect(() => {
+        dispatch(getPostsAction());
+    }, [dispatch]);
+
+    console.log("Posts:", { posts });
+
     return (
         <BlogTemplate
             titleBlock={

@@ -2,7 +2,6 @@
     margin: 62px 0px 69px 105px;
     width: 250px;
     position: relative;
-    /*  text-align: center; */
     height: 40px;
     cursor: pointer;
     box-sizing: border-box;
@@ -19,7 +18,7 @@
     display: flex;
 }
 .user-name {
-    font-family: Raleway;
+    font-family: "Raleway";
     font-style: normal;
     font-weight: bold;
     font-size: 24px;

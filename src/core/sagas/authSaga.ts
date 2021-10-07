@@ -1,3 +1,4 @@
+import { setProfileAction } from './../actions/appActions';
 import { ITokens } from './../../types/user';
 import { sendLoginDatasSuccessAction } from './../actions/loginAction';
 import { AuthService } from './../../services/AuthService';
@@ -57,8 +58,10 @@ function* loginSaga({
         const usersData: { data: ITokens } = yield call(() =>
             AuthService.getUsers()
         );
+
         const users = usersData?.data as any;
-        console.log(users);
+
+        yield put(setProfileAction(users.results[0]));
 
 
 
