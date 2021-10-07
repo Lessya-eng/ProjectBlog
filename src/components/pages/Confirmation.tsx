@@ -41,7 +41,7 @@ export const Confirmation = memo(() => {
     }, [dispatch, params, params?.token, params?.uid]);
     return (
         <MainTemplate
-            titleBlock={<Title title={"Registartion Confirmation"} isActive={true} />}
+            titleBlock={<Title title={"Confirmation"} isActive={true} />}
             mainBlock={
                 <div className="input-center">
                     <div className="confirmation-wrapper">

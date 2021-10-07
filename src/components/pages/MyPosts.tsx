@@ -31,6 +31,11 @@ export const MyPosts = memo(({ post }: IPostList) => {
 
     console.log("MyPosts:", { posts });
 
+    const history = useHistory();
+    const addPost = () => {
+        history.push("/add-post");
+    }
+
     /*     const history = useHistory();
         const allPosts = () => {
             history.push("/");
@@ -40,7 +45,7 @@ export const MyPosts = memo(({ post }: IPostList) => {
             titleBlock={
                 <div className="blog-template-title">
                     <Title title={"My posts"} isActive={true} />
-                    <AddBtn text={"+ Add"} />
+                    <AddBtn text={"+ Add"} onClick={addPost} />
                 </div>
             }
             mainBlock={

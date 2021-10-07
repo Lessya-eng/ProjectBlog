@@ -24,7 +24,7 @@ export const PrivateHeader = memo(() => {
                 <nav className="main-menu">
                     <Link className="for-link link" to={"/all-posts"}>All Posts</Link>
                     <Link className="for-link link" to={"/my-posts"}>My Posts</Link>
-                    <Link className="for-link link" to={"/"}>+ Add Posts</Link>
+                    <Link className="for-link link" to={"/add-post"}>+ Add Posts</Link>
                     <Link className="for-link link" to={"/"}>
                         Log out {" "}
                         <img src={logout} alt="logout" />

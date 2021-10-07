@@ -7,10 +7,10 @@ interface IAddBtn {
     onClick: () => void;
 }
 
-export const AddBtn = memo(({ text, onClick }: IAddBtn) => {
+export const BackBtn = memo(({ text, onClick }: IAddBtn) => {
     return (
         <button type="submit"
-            className="add-btn"
+            className="back-btn"
             onClick={() => onClick()}
         >{text}</button>
     )

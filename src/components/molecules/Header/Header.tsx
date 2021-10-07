@@ -20,6 +20,7 @@ export const Header = memo(() => {
                 <Link className="for-link link" to={"/registration"}>Registration</Link>
                 <Link className="for-link link" to={"/new-password"}>New Password</Link>
                 <Link className="for-link link" to={"/success-mail"}>Success Mail</Link>
+                <Link className="for-link link" to={"/confirmation"}>Suc</Link>
             </nav>
         </div>
 
