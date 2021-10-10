@@ -15,6 +15,8 @@ import { MyPosts } from './components/pages/MyPosts';
 import { PrivateRoute } from './components/router/PrivateRouter';
 import { PublicRoute } from './components/router/PublicRouter';
 import { AddPost } from './components/pages/AddPost';
+import { SelectedPost } from './components/pages/SelectedPost';
+
 
 function App() {
   return (
@@ -36,9 +38,10 @@ function App() {
           <PublicRoute component={ResetPasswordConfirm} path="/reset-password-confirm" exact />
           <PublicRoute component={SuccessMail} path="/activate/:uid/:token" exact />
           <PublicRoute component={SuccessPassword} path="/success-password" exact />
-          <PublicRoute component={AllPosts} path="/all-posts" exact />
-          <PublicRoute component={MyPosts} path="/my-posts" exact />
-          <PublicRoute component={AddPost} path="/add-post" exact />
+          <PrivateRoute component={AllPosts} path="/all-posts" exact />
+          <PrivateRoute component={MyPosts} path="/my-posts" exact />
+          <PrivateRoute component={AddPost} path="/add-post" exact />
+          <PrivateRoute component={SelectedPost} path="/posts/:id" />
         </Switch>
       </Router>
     </div >

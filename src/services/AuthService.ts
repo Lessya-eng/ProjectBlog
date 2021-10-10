@@ -1,17 +1,7 @@
-import { BaseService } from "./BaseService";
+import { GuestService } from "./GuestService";
 
 import { IUserAuth, IUserLoginAuth, IActivationPayload } from "../types/user";
-class AuthAPIService extends BaseService {
-    private storage: Storage;
-
-    private contentType = {
-        "Content-Type": "application/json",
-    };
-
-    constructor() {
-        super();
-        this.storage = localStorage;
-    }
+class AuthAPIService extends GuestService {
 
     public async registration(profile: IUserAuth) {
         return this.post("users/", profile);
@@ -23,15 +13,14 @@ class AuthAPIService extends BaseService {
     public async login(profile: IUserLoginAuth) {
         return this.post("jwt/create/", { email: profile.email_login, password: profile.password_login });
     }
+    public async refreshToken(refreshToken: string) {
+        const data = new FormData();
 
-    public async getUsers() {
-        return this.get("users/");
+        data.append("refresh", refreshToken);
+
+        return this.post("jwt/refresh/", data);
     }
 
-
-    public async deleteUser(id: number) {
-        return this.remove(`users/${id}`);
-    }
 }
 
 export const AuthService = new AuthAPIService();

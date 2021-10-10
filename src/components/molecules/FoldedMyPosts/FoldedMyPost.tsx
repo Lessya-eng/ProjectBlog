@@ -6,7 +6,12 @@ import { FoldedPostDescription } from "../../atoms/FoldedPostDescription";
 import { FoldedPostDate } from "../../atoms/FoldedPostDate";
 import { IPost } from "../../../types/posts";
 
-export const FoldedMyPost = memo((post: IPost) => {
+interface IFoldedMyPost {
+    myPosts?: boolean;
+
+}
+
+export const FoldedMyPost = memo((post: IPost, { myPosts }: IFoldedMyPost) => {
     return (
         <div className="folded-post-wrapper">
             <FoldedPostImg img={post.image} />

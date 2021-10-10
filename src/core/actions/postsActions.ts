@@ -19,3 +19,14 @@ export const getMyPostsAction = createAction(
     ACTIONS.GET_MY_POSTS_ACTION
 )();
 
+export const getSelectedPostAction = createAction(
+    ACTIONS.GET_SELECTED_POST_ACTION
+)<number>();
+
+export const setSelectedPostAction = createAction(
+    ACTIONS.SET_SELECTED_POST_ACTION
+)<IPost[] | null>();
+
+export const setMyPostErrorAction = createAction(
+    ACTIONS.SET_MY_POST_ERROR_ACTION
+)<string>();
