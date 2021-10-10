@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { memo } from "react";
 import { Button } from "../atoms/Button";
 import { Title } from "../atoms/Title";
 import { MainTemplate } from "../template/MainTemplate";
+import { useDispatch, useSelector } from "react-redux";
+import { getRegistrationSelector } from "../../core/selectors/registrationSelector";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory, useParams } from "react-router-dom";
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    Redirect, useHistory
-} from "react-router-dom";
+    setEmailAction,
+    setUserNameAction,
+    setPasswordAction,
+    setConfirmPasswordAction,
+    sendRegistrationConfirmationAction
+} from "../../core";
 
 
 export const SuccessMail = memo(() => {
+    /*     const dispatch = useDispatch();
+        const params = useParams() as any;
+        console.log({ params });
+    
+        useEffect(() => {
+            if (params?.uid && params?.token) {
+                dispatch(sendRegistrationConfirmationAction(params));
+            }
+        }, [dispatch, params, params?.token, params?.uid]); */
+
     const history = useHistory();
     const saccessMail = () => {
         history.push("/login");

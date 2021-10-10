@@ -4,11 +4,10 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect, } from "react-r
 import user from "../../img/user.svg";
 import logout from "../../img/logout.svg";
 import { useSelector } from "react-redux";
-/* import { setUserNameAction } from "../../../core"; */
-import { getRegistrationSelector } from "../../../core/selectors/registrationSelector";
-
+import { getAppState } from "../../../core/selectors/appSelectors";
 
 export const PrivateHeader = memo(() => {
+    const { username } = useSelector(getAppState);
     return (
         <div className="wrapper">
             <div >
@@ -20,16 +19,16 @@ export const PrivateHeader = memo(() => {
                 <div className="burger-line fourth"></div>
                 <div className="block-user-header">
                     <img src={user} alt="user" />
-                    <p className="user-name">UserName</p>
+                    <p className="user-name">{username}</p>
                 </div>
                 <nav className="main-menu">
-                    <Link className="for-link" to={"/all-posts"}><a href="#" className="link">All Posts</a></Link>
-                    <Link className="for-link" to={"/my-posts"}><a href="#" className="link">My Posts</a></Link>
-                    <Link className="for-link" to={"/"}><a href="#" className="link">+ Add Posts</a></Link>
-                    <Link className="for-link" to={"/"}><a href="#" className="link">
+                    <Link className="for-link link" to={"/all-posts"}>All Posts</Link>
+                    <Link className="for-link link" to={"/my-posts"}>My Posts</Link>
+                    <Link className="for-link link" to={"/add-post"}>+ Add Posts</Link>
+                    <Link className="for-link link" to={"/"}>
                         Log out {" "}
                         <img src={logout} alt="logout" />
-                    </a></Link>
+                    </Link>
                 </nav>
             </div>
 

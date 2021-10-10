@@ -1,3 +1,4 @@
+import { postsReducer } from './reducers/postsReducer';
 import { newPasswordReducer } from './reducers/newPasswordReducer';
 import { loginReducer } from './reducers/loginReducer';
 import { resetPasswordReducer } from './reducers/resetPasswordReducer';
@@ -11,4 +12,5 @@ export const rootReducer = combineReducers({
     login: loginReducer,
     email_reset_password: resetPasswordReducer,
     new_password: newPasswordReducer,
+    posts: postsReducer,
 });

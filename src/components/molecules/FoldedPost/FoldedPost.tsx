@@ -5,17 +5,17 @@ import { FoldedPostTitle } from "../../atoms/FoldedPostTitle";
 import { FoldedPostDescription } from "../../atoms/FoldedPostDescription";
 import { FoldedPostDate } from "../../atoms/FoldedPostDate";
 import { FoldedPostAuthor } from "../../atoms/FoldedPostAuthor";
-import { IPost } from "../../../types/post";
+import { IPost } from "../../../types/posts";
 
-export const FoldedPost = memo(({ image, title, description, date, author }: IPost) => {
+export const FoldedPost = memo((post: IPost) => {
     return (
         <div className="folded-post-wrapper">
-            <FoldedPostImg img={image} />
-            <FoldedPostTitle title={title} />
-            <FoldedPostDescription description={description} />
+            <FoldedPostImg img={post.image} />
+            <FoldedPostTitle title={post.title} />
+            <FoldedPostDescription text={post.text} />
             <div className="folded-post">
-                <FoldedPostDate date={date} />
-                <FoldedPostAuthor author={author} />
+                <FoldedPostDate date={post.date} />
+                <FoldedPostAuthor author={String(post.author)} />
             </div>
         </div>
     )
