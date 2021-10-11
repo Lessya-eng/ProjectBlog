@@ -16,20 +16,19 @@ import {
 
 
 export const SuccessMail = memo(() => {
-    /*     const dispatch = useDispatch();
-        const params = useParams() as any;
-        console.log({ params });
-    
-        useEffect(() => {
-            if (params?.uid && params?.token) {
-                dispatch(sendRegistrationConfirmationAction(params));
-            }
-        }, [dispatch, params, params?.token, params?.uid]); */
-
     const history = useHistory();
     const saccessMail = () => {
         history.push("/login");
     }
+    const params = useParams() as any;
+    const dispatch = useDispatch();
+    console.log(`params#####`, params);
+
+    useEffect(() => {
+        if (params?.uid && params?.token) {
+            dispatch(sendRegistrationConfirmationAction(params));
+        }
+    }, [dispatch, params, params?.token, params?.uid]);
     return (
         <MainTemplate
             titleBlock={<Title title={"Success"} isActive={true} />}

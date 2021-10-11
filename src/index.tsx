@@ -7,6 +7,9 @@ import { Provider } from "react-redux"
 import { store } from "./core"
 import { AuthService } from "./services/AuthService";
 import { PostsService } from "./services/PostService";
+import { PublicService } from './services/PublicService';
+import { UserService } from './services/UserService';
+import { BrowserRouter } from "react-router-dom";
 
 AuthService.setCredentials({
   URL: "https://studapi.teachmeskills.by",
@@ -18,11 +21,23 @@ PostsService.setCredentials({
 });
 PostsService.prefix = "blog/posts";
 
+PublicService.setCredentials({
+  URL: "https://studapi.teachmeskills.by",
+});
+PublicService.prefix = "blog";
+
+UserService.setCredentials({
+  URL: "https://studapi.teachmeskills.by",
+});
+UserService.prefix = "auth";
+
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

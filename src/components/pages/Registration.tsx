@@ -25,16 +25,15 @@ export const Registration = memo(() => {
         confirmPassword
     );
     const registrationUser = () => {
-        if (isValidUserName && isValidEmail) {
-            dispatch(
-                sendRegistrationDataAction({
-                    username: userName,
-                    password,
-                    email,
-                })
-            );
-            history.push("/confirmation");
-        }
+        console.log({ userName });
+        dispatch(
+            sendRegistrationDataAction({
+                username: userName,
+                password,
+                email,
+            })
+        );
+        history.push("/confirmation");
     }
     return (
         <MainTemplate

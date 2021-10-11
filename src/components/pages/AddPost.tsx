@@ -46,7 +46,7 @@ export const AddPost = memo(() => {
                 <div>
                     <InputTitle text={"Title"} />
                     <InputTitle text={"Lesson number"} />
-                    <InputText text={"Text"} />
+                    <InputText fieldName={"Text"} />
                 </div>
                 <div className="add-post-inputs-img">
                     <h4>Image</h4>

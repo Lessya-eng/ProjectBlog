@@ -7,6 +7,7 @@ import { FoldedPostDate } from "../../atoms/FoldedPostDate";
 import { FoldedPostAuthor } from "../../atoms/FoldedPostAuthor";
 import { IPost } from "../../../types/posts";
 
+
 export const FoldedPost = memo((post: IPost) => {
     return (
         <div className="folded-post-wrapper">

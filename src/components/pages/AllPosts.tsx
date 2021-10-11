@@ -36,23 +36,24 @@ export const AllPosts = memo(() => {
         history.push("/add-post");
     }
 
-    return (
-        <BlogTemplate
-            titleBlock={
-                <div className="blog-template-title">
-                    <Title title={"All posts"} isActive={true} />
-                    <AddBtn text={"+ Add"} onClick={addPost} />
-                </div>
-            }
-            mainBlock={
-                <div className="blog-template-body">
-                    {posts?.map((post) => (
-                        <div key={post.id}>
+    return (<BlogTemplate
+        titleBlock={
+            <div className="blog-template-title">
+                <Title title={"All posts"} isActive={true} />
+                <AddBtn text={"+ Add"} onClick={addPost} />
+            </div>
+        }
+        mainBlock={
+            <div className="blog-template-body">
+                {posts?.map((post) => {
+                    return (
+                        <Link key={post.id} to={`posts/${post.id}`}>
                             <FoldedPost key={post.id} {...post} />
-                        </div>
-                    ))}
-                </div>
-            }
-        />
+                        </Link>
+                    )
+                })}
+            </div>
+        }
+    />
     )
 });

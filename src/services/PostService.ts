@@ -1,9 +1,7 @@
 import { BaseService } from "./BaseService";
 
 class PostsAPIService extends BaseService {
-    public async getPosts() {
-        return this.get("");
-    }
+    //для приватных url
     public async getMyPosts() {
         return this.get("my_posts/");
     }
