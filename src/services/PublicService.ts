@@ -2,7 +2,7 @@ import { GuestService } from "./GuestService";
 
 class PublicAPIService extends GuestService {
     public async getPosts() {
-        return this.get("posts/?limit=15");
+        return this.get("posts/?limit=300");
     }
     public async getSelectedPost(id: any) {
         return this.get(`posts/${id}`);

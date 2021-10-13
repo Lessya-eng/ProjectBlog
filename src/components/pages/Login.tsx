@@ -57,7 +57,7 @@ export const Login = memo(() => {
                 <div className="input-center" >
                     <Input value={email_login} text={"Email"} type={"email"} isValid={isValidEmailLogin} onChangeHandler={(text: string) => dispatch(setEmailLoginAction(text.trim()))} />
                     <Input value={password_login} text={"Password"} type={"password"} isValid={isValidPasswordLogin} onChangeHandler={(text: string) => dispatch(setPasswordLoginAction(text.trim()))} />
-                    <p className="login-text">{error}</p>
+                    <p>{error}</p>
                     <Button text={"Login"}
                         isValid={
                             isValidEmailLogin &&

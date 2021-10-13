@@ -9,7 +9,7 @@ interface IFoldedPostImg {
 
 export const FoldedPostImg = memo(({ img }: IFoldedPostImg) => {
     return (
-        <img className="folded-post-img" src={img} alt="postImg" />
+        <img className="folded-post-img" src={img} alt="postImg" width={100} height={100} />
     )
 });
 

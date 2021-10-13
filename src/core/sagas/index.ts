@@ -1,2 +1,2 @@
-export { authSaga } from "./authSaga";
 export { postsSaga } from "./postsSaga";
+export { authSaga } from "./authSaga";

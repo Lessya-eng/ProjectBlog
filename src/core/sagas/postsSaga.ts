@@ -1,5 +1,5 @@
-import { setPostsAction, setMyPostsAction, setMyPostErrorAction, setSelectedPostAction, } from './../actions/postsActions';
-import { IPostsRequest } from '../../types/posts';
+import { IPostSendRequest, IPostsRequest } from './../../types/posts';
+import { setPostsAction, setMyPostsAction, setMyPostErrorAction, setSelectedPostAction, sendPostAction } from './../actions/postsActions';
 import { PublicService } from './../../services/PublicService';
 import { PostsService } from './../../services/PostService';
 import { ACTIONS } from './../actions/constants';
@@ -43,9 +43,27 @@ function* getSelectedPost({ payload: id }: Action<number>) {
     } catch (e: any) { }
 }
 
+function* sendPostSaga({ payload }: Action<IPostSendRequest>) {
+    try {
+
+        console.log({ payload });
+
+        const data: { data: IPostsRequest } = yield call(() =>
+            PostsService.sendPost(payload)
+        );
+        console.log({ data });
+
+        //yield put(setPostsAction(data.data.results));
+
+    } catch (e: any) {
+        console.log({ e });
+    }
+}
+
 export function* postsSaga() {
     yield takeEvery(ACTIONS.GET_POSTS_ACTION, getPostsSaga);
     yield takeEvery(ACTIONS.GET_MY_POSTS_ACTION, getMyPostsSaga);
     yield takeEvery(ACTIONS.GET_SELECTED_POST_ACTION, getSelectedPost);
+    yield takeEvery(ACTIONS.SEND_POST_ACTION, sendPostSaga);
 
 }
